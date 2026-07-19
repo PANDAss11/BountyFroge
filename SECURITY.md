@@ -21,7 +21,7 @@ Do not open a public GitHub issue for security concerns that could be actively e
 
 Instead:
 
-1. Email **security@bountyforge-project.example** with a description of the issue, affected file(s), and potential impact.
+1. Email **pandashaker390@gmail.com** with a description of the issue, affected file(s), and potential impact.
 2. Encrypt sensitive details using our PGP key (fingerprint published at `docs/pgp-key.asc` once GPG signing is configured for the project) if the report involves credential or token exposure.
 3. You will receive an acknowledgment within **72 hours**.
 4. We aim to provide a remediation timeline within **7 days** of triage.
