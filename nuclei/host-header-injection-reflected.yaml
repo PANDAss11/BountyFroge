@@ -1,0 +1,32 @@
+id: host-header-injection-reflected
+
+info:
+  name: Reflected Host Header Injection
+  author: bountyforge
+  severity: medium
+  description: >
+    Detects cases where an arbitrary Host header value is reflected unsanitized in the
+    HTTP response body, which frequently indicates the value is also used unsafely in
+    password reset links, canonical URLs, or cache keys. This template confirms
+    reflection only; it does not confirm downstream exploitability, which requires
+    manual follow-up (e.g., testing the password reset flow per
+    checklists/authentication.md).
+  reference:
+    - https://portswigger.net/web-security/host-header
+  classification:
+    cwe-id: CWE-644
+  tags: host-header,misconfig,injection
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/"
+
+    headers:
+      Host: "bountyforge-hhi-canary.example"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "bountyforge-hhi-canary.example"

@@ -1,0 +1,37 @@
+id: git-directory-exposed
+
+info:
+  name: Exposed .git Directory
+  author: bountyforge
+  severity: high
+  description: >
+    Detects a publicly accessible .git directory, which can allow reconstruction of
+    full source code history, including previously committed secrets that were later
+    removed from the current codebase but remain in git history.
+  reference:
+    - https://cwe.mitre.org/data/definitions/527.html
+  classification:
+    cwe-id: CWE-527
+  tags: exposure,git,misconfig,disclosure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.git/HEAD"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "ref:"
+
+      - type: status
+        status:
+          - 200
+
+    extractors:
+      - type: regex
+        part: body
+        regex:
+          - "ref: refs/heads/(.+)"

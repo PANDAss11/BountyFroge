@@ -1,0 +1,44 @@
+id: graphql-introspection-enabled
+
+info:
+  name: GraphQL Introspection Enabled
+  author: bountyforge
+  severity: medium
+  description: >
+    Detects GraphQL endpoints with introspection enabled in what appears to be a
+    production-facing deployment. Introspection reveals the complete schema, including
+    types, fields, and mutations not otherwise documented, meaningfully aiding further
+    testing and potentially exposing internal-only fields never intended for external
+    consumption.
+  reference:
+    - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+  classification:
+    cwe-id: CWE-200
+  tags: graphql,exposure,misconfig,api
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/graphql"
+      - "{{BaseURL}}/api/graphql"
+      - "{{BaseURL}}/v1/graphql"
+      - "{{BaseURL}}/query"
+
+    headers:
+      Content-Type: application/json
+
+    body: |
+      {"query":"query IntrospectionQuery { __schema { queryType { name } types { name kind } } }"}
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "__schema"
+          - "queryType"
+        condition: and
+
+      - type: status
+        status:
+          - 200

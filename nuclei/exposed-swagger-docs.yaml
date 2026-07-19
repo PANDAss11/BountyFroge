@@ -1,0 +1,46 @@
+id: exposed-swagger-docs
+
+info:
+  name: Exposed Swagger/OpenAPI Documentation
+  author: bountyforge
+  severity: low
+  description: >
+    Detects publicly accessible Swagger/OpenAPI documentation endpoints. Exposed API
+    documentation on its own is low severity, but frequently reveals undocumented
+    endpoints, internal parameter names, and authentication mechanisms that materially
+    aid further testing. Elevate severity if the exposed spec includes internal-only
+    endpoints or if "try it out" execution is enabled against production data.
+  reference:
+    - https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/
+  classification:
+    cwe-id: CWE-200
+  tags: exposure,api,swagger,openapi,misconfig
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/swagger.json"
+      - "{{BaseURL}}/swagger/v1/swagger.json"
+      - "{{BaseURL}}/openapi.json"
+      - "{{BaseURL}}/api-docs"
+      - "{{BaseURL}}/v2/api-docs"
+      - "{{BaseURL}}/api/swagger.json"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "application/json"
+        negative: false
+
+      - type: word
+        part: body
+        words:
+          - "\"swagger\""
+          - "\"openapi\""
+        condition: or
+
+      - type: status
+        status:
+          - 200
