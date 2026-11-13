@@ -12,7 +12,7 @@
 |---|---|
 | Overall Severity | [Critical / High / Medium / Low] |
 | CVSS v3.1 Vector | `AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N` |
-| CVSS v3.1 Score | [e.g., 8.8] |
+| CVSS v3.1 Score | [e.g., 9.3] |
 | Vulnerability Type | Cross-Site Scripting ([Stored / Reflected / DOM-based]) |
 
 ### CVSS Justification
