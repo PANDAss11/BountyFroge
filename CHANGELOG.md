@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Fictional-company example report demonstrating full template usage.
 - GitHub Actions workflows for Markdown linting, link checking, and spell checking.
 
+### Fixed
+- Repository URLs in `README.md`, `docs/getting-started.md`, `CONTRIBUTING.md`, and the `CHANGELOG.md` link references now point at the real repository, so the documented `git clone` command works.
+- Added the GitHub Actions workflows (`markdown-lint`, `link-checker`, `spell-check`) that earlier entries and the README badges already described.
+
 ### Planned
 - Remaining report templates: CSRF, SSTI, XXE, LFI, RCE, Open Redirect, Host Header Injection, Race Condition, Cache Poisoning, GraphQL, OAuth, JWT, Business Logic, File Upload, Authorization, general Authentication depth pass.
 - Remaining checklists: Authorization, JWT, OAuth, REST, SOAP, GraphQL, AWS, Azure, GCP, Docker, Kubernetes, Web, Mobile, CI/CD, SAML, CORS, CSP, Rate Limiting, Session Management, Password Reset, Business Logic.
@@ -31,5 +35,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Base documentation set under `docs/`: getting started, methodology overview, reporting guide, FAQ.
 - Repository branding assets (logo, banner, social preview) as SVG.
 
-[Unreleased]: https://github.com/bountyforge/BountyForge/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/bountyforge/BountyForge/releases/tag/v0.1.0
+[Unreleased]: https://github.com/PANDAss11/BountyFroge/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/PANDAss11/BountyFroge/releases/tag/v0.1.0
