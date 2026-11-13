@@ -7,7 +7,10 @@ info:
   description: >
     Detects a publicly accessible .git directory, which can allow reconstruction of
     full source code history, including previously committed secrets that were later
-    removed from the current codebase but remain in git history.
+    removed from the current codebase but remain in git history. The match requires
+    the response to look like a real git HEAD file (a single "ref: refs/..." line or a
+    bare commit hash) and rejects HTML responses, so pages that merely contain the
+    text "ref:" do not match.
   reference:
     - https://cwe.mitre.org/data/definitions/527.html
   classification:
@@ -21,17 +24,25 @@ http:
 
     matchers-condition: and
     matchers:
-      - type: word
-        part: body
-        words:
-          - "ref:"
-
       - type: status
         status:
           - 200
 
-    extractors:
       - type: regex
         part: body
         regex:
-          - "ref: refs/heads/(.+)"
+          - '^\s*(ref:\s*refs/[A-Za-z0-9._/-]+|[0-9a-f]{40})\s*$'
+
+      - type: word
+        part: header
+        words:
+          - "text/html"
+        case-insensitive: true
+        negative: true
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - 'ref:\s*refs/heads/([A-Za-z0-9._/-]+)'
