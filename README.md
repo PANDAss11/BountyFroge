@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="BountyForge banner" width="100%" />
+<img src="assets/banner.svg" alt="BountyForge banner" width="100%" />
 
 # BountyForge
 
@@ -245,8 +245,8 @@ Fully worked, illustrative reports using fictional companies — never copied fr
 BountyForge is documentation and reference material — there is nothing to compile or install to *use* it. Clone it locally so you have offline access and can track updates:
 
 ```bash
-git clone https://github.com/bountyforge/BountyForge.git
-cd BountyForge
+git clone https://github.com/PANDAss11/BountyFroge.git
+cd BountyFroge
 ```
 
 If you plan to run the nuclei template pack, install nuclei separately:
@@ -266,7 +266,7 @@ npm install --no-save markdownlint-cli2 cspell
 
 ```bash
 # 1. Clone
-git clone https://github.com/bountyforge/BountyForge.git && cd BountyForge
+git clone https://github.com/PANDAss11/BountyFroge.git && cd BountyFroge
 
 # 2. Read the getting-started guide
 $EDITOR docs/getting-started.md
@@ -344,7 +344,7 @@ Built with reference to, and in the spirit of, other respected open-source secur
 
 ## Support
 
-- **Questions**: open a [GitHub Discussion](https://github.com/bountyforge/BountyForge/discussions) or a `question`-labeled issue.
+- **Questions**: open a [GitHub Discussion](https://github.com/PANDAss11/BountyFroge/discussions) or a `question`-labeled issue.
 - **Bugs in this repository's content**: use the Bug Report issue template.
 - **Feature requests**: use the Feature Request issue template.
 - **Security issues with the repository itself**: follow [`SECURITY.md`](SECURITY.md).
