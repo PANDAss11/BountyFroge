@@ -25,9 +25,9 @@ nuclei -u https://target.example -t nuclei/ -t ~/nuclei-templates/ -severity med
 |---|---|---|
 | `exposed-swagger-docs.yaml` | Publicly accessible API documentation at common paths | Path probing (`/swagger.json`, `/openapi.json`, `/api-docs`) |
 | `ssrf-metadata-oob.yaml` | SSRF via cloud metadata endpoint, blind variant | Out-of-band interaction on parameters matching common URL-fetch field names |
-| `graphql-introspection-enabled.yaml` | GraphQL introspection left enabled | POSTs an introspection query, checks for a schema in the response |
-| `git-directory-exposed.yaml` | Exposed `.git` directory leaking source history | Path probing for `/.git/HEAD` with content-type verification |
-| `host-header-injection-reflected.yaml` | Host header value reflected unsanitized in response body | Injects a marker value in the `Host` header, checks for reflection |
+| `graphql-introspection-enabled.yaml` | GraphQL introspection left enabled | POSTs an introspection query, requires a JSON `data` envelope containing the schema in the response (a response that only echoes the request does not match) |
+| `git-directory-exposed.yaml` | Exposed `.git` directory leaking source history | Path probing for `/.git/HEAD`; body must be a real git HEAD line and `text/html` responses are rejected |
+| `host-header-injection-reflected.yaml` | Host header value reflected unsanitized in response body | Injects a marker value in the `Host` header, requires an HTTP 200 response with the marker reflected inside an absolute URL |
 
 ## Writing New Templates
 
