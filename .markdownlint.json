@@ -1,10 +1,15 @@
-{
-  "default": true,
-  "MD013": false,
-  "MD024": { "siblings_only": true },
-  "MD033": {
-    "allowed_elements": ["br", "sub", "sup"]
-  },
-  "MD041": false,
-  "MD046": { "style": "fenced" }
-}
+name: Markdown Lint
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
