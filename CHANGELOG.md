@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 - Repository URLs in `README.md`, `docs/getting-started.md`, `CONTRIBUTING.md`, and the `CHANGELOG.md` link references now point at the real repository, so the documented `git clone` command works.
 - Added the GitHub Actions workflows (`markdown-lint`, `link-checker`, `spell-check`) that earlier entries and the README badges already described.
+- Corrected CVSS v3.1 scores for the example vectors in the XSS, SQL Injection, IDOR, and SSRF report templates and the Northwind example report.
+- Tightened the `git-directory-exposed`, `host-header-injection-reflected`, and `graphql-introspection-enabled` nuclei templates to remove false positives, and updated `nuclei/README.md` to match.
+- Fixed the `schemathesis --rate-limit` value in `methodology/api-testing.md` (now `5/s`).
+- Replaced references to not-yet-written checklists and templates in `methodology/api-testing.md` with "(planned)".
 
 ### Planned
 - Remaining report templates: CSRF, SSTI, XXE, LFI, RCE, Open Redirect, Host Header Injection, Race Condition, Cache Poisoning, GraphQL, OAuth, JWT, Business Logic, File Upload, Authorization, general Authentication depth pass.
