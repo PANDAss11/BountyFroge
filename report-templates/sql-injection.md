@@ -12,7 +12,7 @@
 |---|---|
 | Overall Severity | [Critical / High] |
 | CVSS v3.1 Vector | `AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H` |
-| CVSS v3.1 Score | [e.g., 9.8] |
+| CVSS v3.1 Score | [e.g., 10.0] |
 | Vulnerability Type | SQL Injection ([In-band / Blind Boolean / Blind Time-based / Out-of-band]) |
 
 ### CVSS Justification
