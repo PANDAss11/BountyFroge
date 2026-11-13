@@ -46,7 +46,7 @@ Thank you for considering a contribution. BountyForge is maintained as a referen
 
 ```bash
 # Fork and clone
-git clone https://github.com/<your-username>/BountyFroge.git
+git clone https://github.com/PANDAss11/BountyFroge.git
 cd BountyFroge
 
 # Create a topic branch
