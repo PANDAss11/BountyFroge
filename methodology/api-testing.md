@@ -24,7 +24,7 @@ API testing aims to build a complete map of an API's endpoints, authentication m
 | Object-level authorization testing | Autorize (Burp extension) | Automates cross-account authorization testing across a crawled map |
 | Schema-aware fuzzing | `schemathesis` (if OpenAPI spec available) | Generates test cases directly from the API schema |
 | Manual request crafting | Burp Repeater / Postman | For precise, iterative testing of specific hypotheses |
-| Token/JWT inspection | `jwt_tool`, Burp JWT extension | See `checklists/jwt.md` |
+| Token/JWT inspection | `jwt_tool`, Burp JWT extension | See the JWT checklist (planned) |
 
 ## Manual Workflow
 
@@ -43,7 +43,7 @@ API testing aims to build a complete map of an API's endpoints, authentication m
 schemathesis run https://target.example/openapi.json \
   --checks all \
   --header "Authorization: Bearer $TOKEN" \
-  --rate-limit 5
+  --rate-limit 5/s
 
 # Cross-account object-level authorization spot check (example loop)
 for endpoint in orders invoices documents; do
@@ -58,7 +58,7 @@ Automated schema-based fuzzing is effective for surfacing input-validation class
 
 ## Reporting
 
-Map each confirmed finding to the specific OWASP API Security Top 10 2023 category it represents, and use that mapping explicitly in the report's OWASP Mapping section — this significantly speeds up triage for programs that categorize findings this way. Use `report-templates/idor.md` for object-level authorization findings (the most common API finding by volume), `report-templates/authorization.md` for function-level findings, and the general API Security template for anything spanning multiple categories.
+Map each confirmed finding to the specific OWASP API Security Top 10 2023 category it represents, and use that mapping explicitly in the report's OWASP Mapping section — this significantly speeds up triage for programs that categorize findings this way. Use `report-templates/idor.md` for object-level authorization findings (the most common API finding by volume), the Authorization report template (planned) for function-level findings, and the general API Security template for anything spanning multiple categories.
 
 ## Best Practices
 
@@ -72,7 +72,7 @@ Map each confirmed finding to the specific OWASP API Security Top 10 2023 catego
 - Testing only the happy-path documented endpoints and skipping JS-discovered or versioned duplicates.
 - Using only one test account, making object-level authorization testing impossible.
 - Treating a 403/401 response as proof of proper authorization without checking whether the same object is reachable via a slightly different path, method, or parameter format.
-- Ignoring GraphQL endpoints because they don't fit the REST-oriented checklist structure — use `checklists/graphql.md` specifically rather than skipping them.
+- Ignoring GraphQL endpoints because they don't fit the REST-oriented checklist structure — use a GraphQL-specific checklist (planned) rather than skipping them.
 
 ## Example
 
