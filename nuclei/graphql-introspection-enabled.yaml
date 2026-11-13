@@ -9,7 +9,9 @@ info:
     production-facing deployment. Introspection reveals the complete schema, including
     types, fields, and mutations not otherwise documented, meaningfully aiding further
     testing and potentially exposing internal-only fields never intended for external
-    consumption.
+    consumption. The match requires a JSON "data" envelope containing the schema, which
+    the request body itself does not contain, so endpoints that merely echo the request
+    do not match.
   reference:
     - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
   classification:
@@ -32,13 +34,18 @@ http:
 
     matchers-condition: and
     matchers:
-      - type: word
-        part: body
-        words:
-          - "__schema"
-          - "queryType"
-        condition: and
-
       - type: status
         status:
           - 200
+
+      - type: regex
+        part: header
+        regex:
+          - '(?i)content-type:[^\r\n]*json'
+
+      - type: regex
+        part: body
+        condition: and
+        regex:
+          - '"data"\s*:\s*\{\s*"__schema"\s*:\s*\{'
+          - '"queryType"\s*:\s*\{\s*"name"\s*:'
