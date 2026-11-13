@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="BountyForge banner" width="100%" />
+<img src="assets/banner.png" alt="BountyForge banner" width="100%" />
 
 # BountyForge
 
