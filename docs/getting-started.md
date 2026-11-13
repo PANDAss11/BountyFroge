@@ -39,8 +39,8 @@ To get the most out of the repository day-to-day, have the following available:
 ## Cloning the Repository
 
 ```bash
-git clone https://github.com/bountyforge/BountyForge.git
-cd BountyForge
+git clone https://github.com/PANDAss11/BountyFroge.git
+cd BountyFroge
 ```
 
 To stay current with new templates and checklist updates, pull periodically:
