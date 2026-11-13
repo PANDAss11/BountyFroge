@@ -12,7 +12,7 @@
 |---|---|
 | Overall Severity | [Critical / High / Medium] |
 | CVSS v3.1 Vector | `AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N` |
-| CVSS v3.1 Score | [e.g., 7.5] |
+| CVSS v3.1 Score | [e.g., 6.5] |
 | Vulnerability Type | Insecure Direct Object Reference / Broken Object Level Authorization |
 
 ### CVSS Justification
