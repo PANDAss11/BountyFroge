@@ -12,7 +12,7 @@
 |---|---|
 | Overall Severity | [Critical / High / Medium] |
 | CVSS v3.1 Vector | `AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N` |
-| CVSS v3.1 Score | [e.g., 9.1] |
+| CVSS v3.1 Score | [e.g., 9.3] |
 | Vulnerability Type | Server-Side Request Forgery ([Full response returned / Blind]) |
 
 ### CVSS Justification
