@@ -46,8 +46,8 @@ Thank you for considering a contribution. BountyForge is maintained as a referen
 
 ```bash
 # Fork and clone
-git clone https://github.com/<your-username>/BountyForge.git
-cd BountyForge
+git clone https://github.com/<your-username>/BountyFroge.git
+cd BountyFroge
 
 # Create a topic branch
 git checkout -b add/graphql-batching-checklist
