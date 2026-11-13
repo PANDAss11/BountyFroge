@@ -12,7 +12,7 @@ Northwind Cloud Docs' document-sharing feature allows a document owner to leave 
 |---|---|
 | Overall Severity | High |
 | CVSS v3.1 Vector | `AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N` |
-| CVSS v3.1 Score | 8.0 |
+| CVSS v3.1 Score | 8.7 |
 | Vulnerability Type | Stored Cross-Site Scripting |
 
 ### CVSS Justification
