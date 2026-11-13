@@ -5,12 +5,13 @@ info:
   author: bountyforge
   severity: medium
   description: >
-    Detects cases where an arbitrary Host header value is reflected unsanitized in the
-    HTTP response body, which frequently indicates the value is also used unsafely in
-    password reset links, canonical URLs, or cache keys. This template confirms
-    reflection only; it does not confirm downstream exploitability, which requires
-    manual follow-up (e.g., testing the password reset flow per
-    checklists/authentication.md).
+    Detects cases where an arbitrary Host header value is reflected unsanitized in a
+    successful (HTTP 200) response as part of an absolute URL, which frequently
+    indicates the value is also used unsafely in password reset links, canonical URLs,
+    or cache keys. Reflection in error pages (non-200 responses) and bare-text
+    reflection are ignored to reduce false positives. This template confirms reflection
+    only; it does not confirm downstream exploitability, which requires manual
+    follow-up (e.g., testing the password reset flow per checklists/authentication.md).
   reference:
     - https://portswigger.net/web-security/host-header
   classification:
@@ -25,8 +26,13 @@ http:
     headers:
       Host: "bountyforge-hhi-canary.example"
 
+    matchers-condition: and
     matchers:
-      - type: word
+      - type: status
+        status:
+          - 200
+
+      - type: regex
         part: body
-        words:
-          - "bountyforge-hhi-canary.example"
+        regex:
+          - '(?i)(https?:)?//bountyforge-hhi-canary\.example'
